@@ -1,10 +1,4 @@
-# = Ruty Loop Tool Tags
-#
-# Author:: Armin Ronacher
-# 
-# Copyright (c) 2006 by Armin Ronacher
-#
-# You can redistribute it and/or modify it under the terms of the BSD license.
+# = MerbRuty Loop Tool Tags
 
 # A tag that cycles through a list of values each iteration
 # Useful for example if you want alternating rows:
@@ -14,7 +8,7 @@
 #       <td>..</td>
 #     </tr>
 #   {% endfor %}
-class Ruty::Tags::Cycle < Ruty::Tag
+class MerbRuty::Tags::Cycle < MerbRuty::Tag
 
   def initialize parser, argstring
     args = parser.parse_arguments(argstring)
@@ -29,7 +23,7 @@ class Ruty::Tags::Cycle < Ruty::Tag
     nil
   end
 
-  Ruty::Tags.register(self, :cycle)
+  MerbRuty::Tags.register(self, :cycle)
 
 end
 
@@ -51,7 +45,7 @@ end
 #     {% endfor %}
 #   </div>
 # {% endfor %}
-class Ruty::Tags::IfChanged < Ruty::Tag
+class MerbRuty::Tags::IfChanged < MerbRuty::Tag
 
   def initialize parser, argstring
     args = parser.parse_arguments(argstring)
@@ -81,5 +75,5 @@ class Ruty::Tags::IfChanged < Ruty::Tag
     nil
   end
 
-  Ruty::Tags.register(self, :ifchanged)
+  MerbRuty::Tags.register(self, :ifchanged)
 end

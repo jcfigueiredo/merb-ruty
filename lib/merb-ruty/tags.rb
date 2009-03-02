@@ -1,4 +1,4 @@
-# = Ruty Builtin Tags
+# = MerbRuty Builtin Tags
 #
 # Author:: Armin Ronacher
 # 
@@ -6,7 +6,7 @@
 #
 # You can redistribute it and/or modify it under the terms of the BSD license.
 
-module Ruty
+module MerbRuty
 
   # base class for all ruty tags
   class Tag < Datastructure::Node

@@ -1,12 +1,6 @@
-# = Ruty Conditional Tags
-#
-# Author:: Armin Ronacher
-# 
-# Copyright (c) 2006 by Armin Ronacher
-#
-# You can redistribute it and/or modify it under the terms of the BSD license.
+# = MerbRuty Conditional Tags
 
-class Ruty::Tags::If < Ruty::Tag
+class MerbRuty::Tags::If < MerbRuty::Tag
 
   def initialize parser, argstring
     # parse everything until the next else or endif tag
@@ -54,6 +48,6 @@ class Ruty::Tags::If < Ruty::Tag
     end
   end
 
-  Ruty::Tags.register(self, :if)
+  MerbRuty::Tags.register(self, :if)
 
 end

@@ -1,8 +1,8 @@
-module Ruty
+module MerbRuty
   
   # Returns version of the ruty template engine
   def self.version
-    "ruty.rb 0.0.1"
+    "merb-ruty.rb 0.0.1.0"
   end
   
   # ruty base exception
@@ -23,13 +23,13 @@ module Ruty
   end
 
   # load libraries
-  require 'ruty/constants'
-  require 'ruty/parser'
-  require 'ruty/context'
-  require 'ruty/datastructure'
-  require 'ruty/loaders'
-  require 'ruty/filters'
-  require 'ruty/tags'
+  require 'merb-ruty/constants'
+  require 'merb-ruty/parser'
+  require 'merb-ruty/context'
+  require 'merb-ruty/datastructure'
+  require 'merb-ruty/loaders'
+  require 'merb-ruty/filters'
+  require 'merb-ruty/tags'
 
   # ruty context
   RUTY_CONTEXT = {
@@ -39,7 +39,7 @@ module Ruty
     :var_end =>         Constants::VAR_END,
     :comment_start =>   Constants::COMMENT_START,
     :comment_end =>     Constants::COMMENT_END,
-    :version =>         Ruty.version
+    :version =>         MerbRuty.version
   }
   
   # template class

@@ -1,13 +1,6 @@
-# = Ruty Context Class
-#
-# Author:: Armin Ronacher
-# 
-# Copyright (c) 2006 by Armin Ronacher
-#
-# You can redistribute it and/or modify it under the terms of the BSD license.
+# = MerbRuty Context Class
 
-
-module Ruty
+module MerbRuty
 
   # represents the internal namespace used by ruty
   # It basically works like a hash just that it has

@@ -1,12 +1,6 @@
-# = Ruty For Loop Tag
-#
-# Author:: Armin Ronacher
-# 
-# Copyright (c) 2006 by Armin Ronacher
-#
-# You can redistribute it and/or modify it under the terms of the BSD license.
+# = MerbRuty For Loop Tag
 
-class Ruty::Tags::ForLoop < Ruty::Tag
+class MerbRuty::Tags::ForLoop < MerbRuty::Tag
 
   def initialize parser, argstring
     # parse everything until the next else or endfor tag
@@ -78,6 +72,6 @@ class Ruty::Tags::ForLoop < Ruty::Tag
     nil
   end
 
-  Ruty::Tags.register(self, :for)
+  MerbRuty::Tags.register(self, :for)
 
 end

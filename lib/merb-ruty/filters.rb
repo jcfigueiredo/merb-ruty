@@ -1,14 +1,8 @@
-# = Ruty Builtin Tags
-#
-# Author:: Armin Ronacher
-# 
-# Copyright (c) 2006 by Armin Ronacher
-#
-# You can redistribute it and/or modify it under the terms of the BSD license.
+# = MerbRuty Builtin Tags
 
 require 'uri'
 
-module Ruty
+module MerbRuty
 
   # default class for all filter collections
   class FilterCollection
@@ -166,7 +160,7 @@ module Ruty
       end
 
       # add just one filter using a code block:
-      # Ruty::Filters::add('swapcase') { |context, value|
+      # MerbRuty::Filters::add('swapcase') { |context, value|
       #   value.to_s.swap_case
       # }
       def add name, &block

@@ -377,9 +377,5 @@
 #   ruty.comment_end      end comment ends ( #} )
 #   ruty.version          the ruty version as string 
 #
-# Extending Ruty
-# ==============
-#
-# Is very easy. Have a look at the sourcecode... dumdidum. there is no
-# documentation ^^
+
 

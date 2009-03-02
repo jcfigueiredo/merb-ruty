@@ -1,12 +1,5 @@
-# = Ruty Filesystem Loader
-#
-# Author:: Armin Ronacher
-# 
-# Copyright (c) 2006 by Armin Ronacher
-#
-# You can redistribute it and/or modify it under the terms of the BSD license.
-
-class Ruty::Loaders::Filesystem < Ruty::Loader
+# = MerbRuty Filesystem Loader
+class MerbRuty::Loaders::Filesystem < MerbRuty::Loader
 
   # the filesystem loader takes the following arguments:
   #
@@ -29,7 +22,7 @@ class Ruty::Loaders::Filesystem < Ruty::Loader
     path = path || path_for?(name, parent)
     f = File.new(path, 'r')
     begin
-      parser = Ruty::Parser.new(f.read, self, name)
+      parser = MerbRuty::Parser.new(f.read, self, name)
     ensure
       f.close
     end
@@ -44,14 +37,14 @@ class Ruty::Loaders::Filesystem < Ruty::Loader
       path = File.join(File.dirname(parent), parts.join(File::SEPARATOR)) :
       path = parts.join(File::SEPARATOR)
     )
-    raise Ruty::TemplateNotFound, name if not File.exist?(path)
+    raise MerbRuty::TemplateNotFound, name if not File.exist?(path)
     path
   end
 
 end
 
 # like the normal filesystem loader but uses memcaching
-class Ruty::Loaders::MemcachingFilesystem < Ruty::Loaders::Filesystem
+class MerbRuty::Loaders::MemcachingFilesystem < MerbRuty::Loaders::Filesystem
 
   # the memcaching filesystem loader takes the
   # same arguments as the normal filesystem loader

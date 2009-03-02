@@ -1,12 +1,6 @@
-# = Ruty Capture Tag
-#
-# Author:: Armin Ronacher
-# 
-# Copyright (c) 2006 by Armin Ronacher
-#
-# You can redistribute it and/or modify it under the terms of the BSD license.
+# = MerbRuty Capture Tag
 
-class Ruty::Tags::Capture < Ruty::Tag
+class MerbRuty::Tags::Capture < MerbRuty::Tag
 
   def initialize parser, argstring
     if not argstring =~ /^as\s+([a-zA-Z_][a-zA-Z0-9_]*)$/
@@ -23,6 +17,6 @@ class Ruty::Tags::Capture < Ruty::Tag
     context[@name] = substream
   end
 
-  Ruty::Tags.register(self, :include)
+  MerbRuty::Tags.register(self, :include)
 
 end

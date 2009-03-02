@@ -1,12 +1,6 @@
 # = Ruty Loaders
-#
-# Author:: Armin Ronacher
-# 
-# Copyright (c) 2006 by Armin Ronacher
-#
-# You can redistribute it and/or modify it under the terms of the BSD license.
 
-module Ruty
+module MerbRuty
 
   # base class for all loaders
   class Loader

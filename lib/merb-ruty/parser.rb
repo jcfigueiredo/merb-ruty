@@ -1,15 +1,9 @@
-# = Ruty Parser
-#
-# Author:: Armin Ronacher
-# 
-# Copyright (c) 2006 by Armin Ronacher
-#
-# You can redistribute it and/or modify it under the terms of the BSD license.
+# = MerbRuty Parser
 
 require 'strscan'
 
 
-module Ruty
+module MerbRuty
 
   # the parser class. parses a given template into a nodelist
   class Parser

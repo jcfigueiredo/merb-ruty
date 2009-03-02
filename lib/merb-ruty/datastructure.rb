@@ -1,14 +1,8 @@
-# = Ruty Data Structure
-#
-# Author:: Armin Ronacher
-# 
-# Copyright (c) 2006 by Armin Ronacher
-#
-# You can redistribute it and/or modify it under the terms of the BSD license.
+# = MerbRuty Data Structure
 
 require 'stringio'
 
-module Ruty::Datastructure
+module MerbRuty::Datastructure
 
   # baseclass for all nodes
   class Node

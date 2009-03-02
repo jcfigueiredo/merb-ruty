@@ -1,12 +1,6 @@
-# = Ruty Constants
-#
-# Author:: Armin Ronacher
-# 
-# Copyright (c) 2006 by Armin Ronacher
-#
-# You can redistribute it and/or modify it under the terms of the BSD license.
+# = MerbRuty Constants
 
-module Ruty::Constants
+module MerbRuty::Constants
 
   # template tags.
   # The ruty parser uses the values here to verify which token it
