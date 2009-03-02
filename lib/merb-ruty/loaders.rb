@@ -41,6 +41,6 @@ module MerbRuty
   end
 
   # load known builtin loaders
-  require 'ruty/loaders/filesystem'
+  require 'merb-ruty/loaders/filesystem'
 
 end

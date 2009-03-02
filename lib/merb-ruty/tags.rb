@@ -1,10 +1,4 @@
 # = MerbRuty Builtin Tags
-#
-# Author:: Armin Ronacher
-# 
-# Copyright (c) 2006 by Armin Ronacher
-#
-# You can redistribute it and/or modify it under the terms of the BSD license.
 
 module MerbRuty
 
@@ -40,13 +34,13 @@ module MerbRuty
   end
 
   # load known builtin tags
-  require 'ruty/tags/forloop'
-  require 'ruty/tags/conditional'
-  require 'ruty/tags/looptools'
-  require 'ruty/tags/inheritance'
-  require 'ruty/tags/inclusion'
-  require 'ruty/tags/debug'
-  require 'ruty/tags/filter'
-  require 'ruty/tags/capture'
+  require 'merb-ruty/tags/forloop'
+  require 'merb-ruty/tags/conditional'
+  require 'merb-ruty/tags/looptools'
+  require 'merb-ruty/tags/inheritance'
+  require 'merb-ruty/tags/inclusion'
+  require 'merb-ruty/tags/debug'
+  require 'merb-ruty/tags/filter'
+  require 'merb-ruty/tags/capture'
 
 end
