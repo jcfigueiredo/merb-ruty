@@ -1,6 +1,6 @@
 module MerbRuty
   
-  # Returns version of the ruty template engine
+  # Returns version of the ruty template engine.
   def self.version
     "merb-ruty.rb 0.0.1.0"
   end
