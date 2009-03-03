@@ -23,4 +23,12 @@ class SimpleRenderingTest < Test::Unit::TestCase
     assert_not_equal expected, rendered, 'Message is different from expected'
   end
 
+  def test_debug_message
+    t = MerbRuty::Template.new('{% debug %}!')
+    rendered =  t.render(:alpha => 'beta')
+
+    assert_not_nil rendered, 'Result should no be nil'
+
+  end
+
 end
