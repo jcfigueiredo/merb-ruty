@@ -5,6 +5,9 @@ $:.unshift File.join(File.dirname(__FILE__),'..','lib')
 
 require 'test/unit'
 require 'merb-ruty'
+require 'fileutils'
+require 'merb-ruty/loaders/filesystem'
+
 
 class SimpleRenderingTest < Test::Unit::TestCase
   def test_render_template_works_with_valid_values
@@ -28,6 +31,19 @@ class SimpleRenderingTest < Test::Unit::TestCase
     rendered =  t.render(:alpha => 'beta')
 
     assert_not_nil rendered, 'Result should no be nil'
+  end
+
+  def test_layout_rendering
+    title = "You've been rendered"
+    expected = "<title>%s</title>" % title
+
+    templates_dir = Dir.getwd + '/tests/templates'
+    loader = MerbRuty::Loaders::Filesystem.new(:dirname => templates_dir,:suffix => '.html')
+    t = loader.get_template('layout.html')
+
+    rendered =  t.render(:title => title)
+    
+    assert(rendered.include?(expected), 'Title not found')
 
   end
 
