@@ -11,8 +11,8 @@ class MerbRuty::Loaders::Filesystem < MerbRuty::Loader
   #     Defaults to an empty string.
   def initialize options=nil
     super(options)
-    if not @options.include?(:dirname)
-      raise ArgumenError, 'dirname required as argument for filesystem loader'
+    unless @options.include?(:dirname)
+      raise ArgumentError, 'dirname required as argument for filesystem loader'
     end
     @dir = @options[:dirname]
     @suffix = @options[:suffix] || ''
@@ -43,26 +43,27 @@ class MerbRuty::Loaders::Filesystem < MerbRuty::Loader
 
 end
 
-# like the normal filesystem loader but uses memcaching
-class MerbRuty::Loaders::MemcachingFilesystem < MerbRuty::Loaders::Filesystem
-
-  # the memcaching filesystem loader takes the
-  # same arguments as the normal filesystem loader
-  # and additionally a key called :amount that indicates
-  # the maximum amount of cached templates. The amount
-  # defaults to 20.
-  def initialze options=nil
-    super(options)
-    @amount = @options[:amount] || 20
-    @cache = {}
-  end
-
-  def load_cached name, parent=nil
-    path = path_for?(name, parent)
-    return @cache[path] if @cache.include?(path)
-    nodelist = super(name, parent, path)
-    @cache.clear if @cache.size >= @amount
-    @cache[path] = nodelist
-  end
-
-end
+#
+## like the normal filesystem loader but uses memcaching
+#class MerbRuty::Loaders::MemcachingFilesystem < MerbRuty::Loaders::Filesystem
+#
+#  # the memcaching filesystem loader takes the
+#  # same arguments as the normal filesystem loader
+#  # and additionally a key called :amount that indicates
+#  # the maximum amount of cached templates. The amount
+#  # defaults to 20.
+#  def initialze options=nil
+#    super(options)
+#    @amount = @options[:amount] || 20
+#    @cache = {}
+#  end
+#
+#  def load_cached name, parent=nil
+#    path = path_for?(name, parent)
+#    return @cache[path] if @cache.include?(path)
+#    nodelist = super(name, parent, path)
+#    @cache.clear if @cache.size >= @amount
+#    @cache[path] = nodelist
+#  end
+#
+#end
