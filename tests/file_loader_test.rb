@@ -49,18 +49,4 @@ class FileLoaderTest < Test::Unit::TestCase
     assert_equal expected, actual, 'Template path different from expected '
   end
 
-  def test_template_path_resolution_with_parent
-    loader = MerbRuty::Loaders::Filesystem.new(:dirname => Dir.getwd, :suffix => @template_sufix)
-    expected  = '%s/tests/templates/layout.html' % Dir.getwd
-    actual = loader.path_for? LAYOUT_TEMPLATE, '/tests/templates/layout'
-
-    assert_equal expected, actual, 'Template path different from expected '
-  end
-
-
-  #  def test_layout_rendering
-  #    loader = MerbRuty::Loaders::Filesystem.new(:dirname => templates_dir,:suffix => '.html')
-  #    t = loader.get_template(LAYOUT_TEMPLATE)
-  #    assert(rendered.include?(expected), 'Title not found')
-  #  end
 end

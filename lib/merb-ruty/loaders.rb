@@ -25,7 +25,7 @@ module MerbRuty
     # the tags modify the nodelist returned by a loader.
     # If parent is given it must be used to resolve relative
     # paths
-    def load_local name, parent=nil
+    def load_local name
       raise NotImplementedError
     end
 
