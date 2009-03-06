@@ -10,8 +10,11 @@ class FileLoaderTest < Test::Unit::TestCase
 
 
   def setup
-    @template_dir = Dir.getwd + '/tests/templates'
+    @curr_dir = Dir.getwd.sub("/tests", "")
+
+    @template_dir = @curr_dir + '/tests/templates'
     @template_sufix = '.html'
+
   end
 
   def test_loader_setup
@@ -43,10 +46,23 @@ class FileLoaderTest < Test::Unit::TestCase
 
   def test_template_path_resolution
     loader = MerbRuty::Loaders::Filesystem.new(:dirname => @template_dir, :suffix => @template_sufix)
-    expected = '%s/tests/templates/layout.html' % Dir.getwd
+    expected = '%s/tests/templates/layout.html' % @curr_dir
     actual = loader.path_for? LAYOUT_TEMPLATE
     
     assert_equal expected, actual, 'Template path different from expected '
   end
 
+  def test_template_path_not_found_will_raise
+    loader = MerbRuty::Loaders::Filesystem.new(:dirname => @template_dir, :suffix => @template_sufix)
+    
+    assert_raise(MerbRuty::TemplateNotFound) { loader.path_for? 'invalidfile.nox' }
+  end
+
+  def load_local_file
+
+    loader = MerbRuty::Loaders::Filesystem.new(:dirname => @template_dir, :suffix => @template_sufix)
+    expected = loader.load_local(LAYOUT_TEMPLATE)
+    assert_not_nil expected, 'Template not rendered'
+
+  end
 end

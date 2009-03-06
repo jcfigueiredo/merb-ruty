@@ -1,0 +1,10 @@
+desc "default is run tests"
+task :default do
+    Rake::Task[:test]	
+end
+
+desc "run tests"
+task :test do
+    `rcov simple_rendering_test.rb file_loader_test.rb --exclude rcov.rb`
+    print "tests report generated @ coverage/\n"
+end

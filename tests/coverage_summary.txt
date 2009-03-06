@@ -1,0 +1,7 @@
+Loaded suite /usr/bin/rcov
+Started
+..........
+Finished in 0.013931 seconds.
+
+10 tests, 14 assertions, 0 failures, 0 errors
+57.5%   17 file(s)   1396 Lines   887 LOC

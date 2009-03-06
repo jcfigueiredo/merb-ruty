@@ -33,7 +33,7 @@ class MerbRuty::Loaders::Filesystem < MerbRuty::Loader
     # escape name, don't allow access to path parts with a
     # leading dot
     parts = name.split(File::SEPARATOR).select { |p| p and p[0] != ?. }
-    path = File.join(@dir, path = parts.join(File::SEPARATOR))
+    path = File.join(@dir, parts.join(File::SEPARATOR))
 
     raise MerbRuty::TemplateNotFound, name if not File.exist?(path)
     path
