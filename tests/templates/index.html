@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block title %}{{ real_title }}{% endblock %}
+{% block content %}
+  <h2>What is Ruty?</h2>
+  <p>
+    Ruty is a sandboxed, django/jinja like template engine with
+    template inheritance support. It's completely sandboxed so
+    template designers won't be able to screw things up or execute
+    code which is not meant to be executed.
+  </p>
+{% endblock %}

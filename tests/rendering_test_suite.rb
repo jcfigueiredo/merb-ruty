@@ -7,3 +7,4 @@ require 'test/unit'
 
 require 'simple_rendering_test'
 require 'file_loader_test'
+require 'template_inheritance_test'

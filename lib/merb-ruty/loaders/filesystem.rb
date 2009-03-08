@@ -18,8 +18,8 @@ class MerbRuty::Loaders::Filesystem < MerbRuty::Loader
     @suffix = @options[:suffix] || ''
   end
 
-  def load_local name, path=nil
-    path = path || path_for?(name)
+ def load_local name, parent=nil, path=nil
+    path = path || path_for?(name, parent)
     f = File.new(path, 'r')
     begin
       parser = MerbRuty::Parser.new(f.read, self, name)
@@ -29,12 +29,14 @@ class MerbRuty::Loaders::Filesystem < MerbRuty::Loader
     parser.parse
   end
 
-  def path_for? name
+  def path_for? name, parent=nil
     # escape name, don't allow access to path parts with a
     # leading dot
     parts = name.split(File::SEPARATOR).select { |p| p and p[0] != ?. }
-    path = File.join(@dir, parts.join(File::SEPARATOR))
-
+    path = File.join(@dir, (parent) ?
+      path = File.join(File.dirname(parent), parts.join(File::SEPARATOR)) :
+      path = parts.join(File::SEPARATOR)
+    )
     raise MerbRuty::TemplateNotFound, name if not File.exist?(path)
     path
   end
