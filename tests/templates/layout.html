@@ -3,8 +3,10 @@
   <head>
     <title>{% block title %}{{ title }}{% endblock %}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
   </head>
   <body>
+    <h3>{{ user.name }},{{ user.age }}</h3>
     {% block content %}{% endblock %}
   </body>
 </html>
