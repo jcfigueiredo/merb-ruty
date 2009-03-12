@@ -87,7 +87,7 @@ module MerbRuty
         elsif token == :filter_end
           result << filter_buffer.dup if not filter_buffer.empty?
           cur_buffer = result
-        elsif token == :name
+        elsif token == :first_name
           cur_buffer << value.to_sym
         elsif token == :number
           cur_buffer << (value.include?('.') ? value.to_f : value.to_i)
@@ -139,7 +139,7 @@ module MerbRuty
           # normal data, no filters.
           if state == :initial
             if match = s.scan(NAME_RE)
-              block.call(:name, match)
+              block.call(:first_name, match)
             elsif s.scan(PIPE_RE)
               state = :filter
               block.call(:filter_start, nil)
@@ -170,7 +170,7 @@ module MerbRuty
               block.call(:separator, nil)
             # variables, strings and numbers
             elsif match = s.scan(NAME_RE)
-              block.call(:name, match)
+              block.call(:first_name, match)
             elsif match = s.scan(STRING_RE)
               block.call(:string, match)
             elsif match = s.scan(NUMBER_RE)

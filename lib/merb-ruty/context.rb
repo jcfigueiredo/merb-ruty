@@ -112,7 +112,7 @@ module MerbRuty
               current.ruty_safe?(part_sym)
           current = current.send(part_sym)
         # fail with nil in all other cases.
-        elsif not current.send(part_sym).nil?
+        elsif current.instance_variable_defined?('@' + part_sym.to_s)
           current = current.send(part_sym)
         else
           return nil

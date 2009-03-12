@@ -10,6 +10,7 @@ class SimpleRenderingTest < Test::Unit::TestCase
 
   def setup
     @curr_dir = Dir.getwd.sub("/tests", "")
+    @templates_dir = @curr_dir  + '/tests/templates'
   end
 
   def test_render_template_works_with_valid_values
@@ -39,9 +40,7 @@ class SimpleRenderingTest < Test::Unit::TestCase
     title = "You've been rendered"
     expected = "<title>%s</title>" % title
 
-    templates_dir = @curr_dir  + '/tests/templates'
-
-    loader = MerbRuty::Loaders::Filesystem.new(:dirname => templates_dir,:suffix => '.html')
+    loader = MerbRuty::Loaders::Filesystem.new(:dirname => @templates_dir,:suffix => '.html')
     t = loader.get_template('layout.html')
 
     rendered =  t.render(:title => title)
@@ -50,7 +49,7 @@ class SimpleRenderingTest < Test::Unit::TestCase
 
   end
 
-  def test_layout_rendering_with_objects
+  def test_layout_rendering_with_objects_properties
 
     title = "You've been rendered"
     expected_title = "<title>%s</title>" % title
@@ -58,11 +57,9 @@ class SimpleRenderingTest < Test::Unit::TestCase
     name, age = "Claudio", 31
     expected_heading = "<h3>%s,%s</h3>" %[name,age]
 
-
-    templates_dir = @curr_dir  + '/tests/templates'
     user = UserFixture.new(name, age)
 
-    loader = MerbRuty::Loaders::Filesystem.new(:dirname => templates_dir,:suffix => '.html')
+    loader = MerbRuty::Loaders::Filesystem.new(:dirname => @templates_dir,:suffix => '.html')
     t = loader.get_template('layout.html')
 
     rendered =  t.render(:user => user, :title => title)
@@ -72,4 +69,45 @@ class SimpleRenderingTest < Test::Unit::TestCase
     
   end
 
+  def test_render_template_with_ruty_safe_method_call
+    name, age, last_name = "Claudio", 31, "Figueiredo"
+    expected_heading = "<h4>%s %s</h4>" %[name,last_name]
+
+    user = UserFixture.new(name, age, last_name)
+
+    loader = MerbRuty::Loaders::Filesystem.new(:dirname => @templates_dir,:suffix => '.html')
+    t = loader.get_template('layout.html')
+    rendered = t.render(:user => user)
+    
+    assert(rendered.include?(expected_heading), 'Heading not found')
+
+  end
+
+  def test_render_template_with_ruty_unsafe_method_call
+    name, age, last_name = "Claudio", 31, "Figueiredo"
+    expected_heading = "<h5></h5>"
+
+    user = UserFixture.new(name, age, last_name)
+
+    loader = MerbRuty::Loaders::Filesystem.new(:dirname => @templates_dir,:suffix => '.html')
+    t = loader.get_template('layout.html')
+    rendered = t.render(:user => user)
+
+    assert(rendered.include?(expected_heading), 'Heading found when it shouldnt')
+
+  end
+
+  def test_render_template_with_array_inference
+    name, age, last_name = "Claudio", 31, "Figueiredo"
+    expected_heading = "<div>one</div>"
+
+    user = UserFixture.new(name, age, last_name)
+
+    loader = MerbRuty::Loaders::Filesystem.new(:dirname => @templates_dir,:suffix => '.html')
+    t = loader.get_template('layout.html')
+    rendered = t.render(:user => user, :children => user.get_children)
+
+    assert(rendered.include?(expected_heading), 'Heading not found')
+
+  end
 end

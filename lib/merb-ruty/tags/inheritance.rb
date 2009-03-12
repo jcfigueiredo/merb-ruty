@@ -30,7 +30,7 @@ class MerbRuty::Tags::Block < MerbRuty::Tag
         render_node(context, stream, index - 1) if index.abs <= @stack.size
       },
       :depth =>     Proc.new { index.abs },
-      :name =>      Proc.new { @name }
+      :first_name =>      Proc.new { @name }
     )
     @stack[index].render_node(context, stream)
     context.pop
