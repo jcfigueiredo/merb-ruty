@@ -7,13 +7,12 @@ class UserFixture
 
   def initialize(first_name, age, last_name = '')
     @first_name, @last_name, @age = first_name, last_name, age
-
-    @children =  Array.new
   end
 
   def get_children
-    @children.insert(UserFixture.new('one', 1))
-    @children.insert(UserFixture.new('two', 2))
+    @children =  Array.new
+    @children.push(UserFixture.new('one', 1))
+    @children.push(UserFixture.new('two', 2))
     return @children
   end
 

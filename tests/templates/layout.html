@@ -9,6 +9,10 @@
     <h3>{{ user.first_name }},{{ user.age }}</h3>
     <h4>{{ user.full_name }}</h4>
     <h5>{{ user.full_unsafe_name }}</h5>
+    <div>{{ children.0.first_name }}-{{ children.0.age }}</div>
+    <div>{{ children.1.first_name }}-{{ children.1.age }}</div>
+    <div>{{ children.2.first_name }}-{{ children.2.age }}</div>
+
     {% block content %}{% endblock %}
   </body>
 </html>

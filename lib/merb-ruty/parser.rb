@@ -108,7 +108,7 @@ module MerbRuty
 
       # lexer constants
       WHITESPACE_RE = /\s+/m
-      NAME_RE = /[a-zA-Z_][a-zA-Z0-9_]*(\.[a-zA-Z_][a-zA-Z0-9_]*)*/
+      NAME_RE = /[a-zA-Z_][a-zA-Z0-9_]*(\.[a-zA-Z0-9_][a-zA-Z0-9_]*)*/
       PIPE_RE = /\|/
       FILTER_END_RE = /;/
       SEPARATOR_RE = /,/

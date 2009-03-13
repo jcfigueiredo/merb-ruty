@@ -99,7 +99,8 @@ class SimpleRenderingTest < Test::Unit::TestCase
 
   def test_render_template_with_array_inference
     name, age, last_name = "Claudio", 31, "Figueiredo"
-    expected_heading = "<div>one</div>"
+    expected_heading1 = "<div>one-1</div>"
+    expected_heading2 = "<div>two-2</div>"
 
     user = UserFixture.new(name, age, last_name)
 
@@ -107,7 +108,24 @@ class SimpleRenderingTest < Test::Unit::TestCase
     t = loader.get_template('layout.html')
     rendered = t.render(:user => user, :children => user.get_children)
 
-    assert(rendered.include?(expected_heading), 'Heading not found')
+    assert(rendered.include?(expected_heading1), 'Heading1 not found')
+    assert(rendered.include?(expected_heading2), 'Heading2 not found')
 
   end
+
+  def test_render_template_with_array_index_out_of_boundaries_wont_throw
+    name, age, last_name = "Claudio", 31, "Figueiredo"
+
+    user = UserFixture.new(name, age, last_name)
+
+    loader = MerbRuty::Loaders::Filesystem.new(:dirname => @templates_dir,:suffix => '.html')
+    t = loader.get_template('layout.html')
+
+    assert_nothing_thrown('rendering throws when it should not') {
+      rendered = t.render(:user => user, :children => user.get_children)
+      assert_not_nil rendered, 'The template was not rendered'
+    }
+
+  end
+
 end
