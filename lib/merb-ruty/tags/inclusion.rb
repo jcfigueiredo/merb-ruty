@@ -7,7 +7,7 @@
 class MerbRuty::Tags::Include < MerbRuty::Tag
 
   def initialize parser, argstring
-    if not argstring =~ /^("')(.*?)\1$/
+    if not argstring =~ /^["'].*["']$/
       parser.fail('include takes exactly one argument which must be ' +
                   'an hardcoded string')
     end
