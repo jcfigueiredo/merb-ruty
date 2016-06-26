@@ -53,7 +53,7 @@ module MerbRuty
           result << [:comment, data.strip]
         end
       end
-      rest = @source[$~.end(0)..-1]
+      rest = $~ ? @source[$~.end(0)..-1] : ""
       result << [:text, rest] if not rest.empty?
       result.close
     end

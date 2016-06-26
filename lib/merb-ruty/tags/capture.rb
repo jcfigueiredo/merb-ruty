@@ -17,6 +17,6 @@ class MerbRuty::Tags::Capture < MerbRuty::Tag
     context[@name] = substream
   end
 
-  MerbRuty::Tags.register(self, :include)
+  MerbRuty::Tags.register(self, :capture)
 
 end
